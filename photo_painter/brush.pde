@@ -26,8 +26,16 @@ class Brush {
   }
  
   void createStrokePath() {
-    int x = round(random(PIC_FOR_SAMPLING.width));
-    int y = round(random(PIC_FOR_SAMPLING.height));
+    int x, y;
+    if (shouldFocus()) {
+      x = round(random(FOCUS_X * SIZE_RATIO - FOCUS_SIZE, FOCUS_X * SIZE_RATIO + FOCUS_SIZE));
+      x = min(max(0, x), PIC_FOR_SAMPLING.width - 1);
+      y = round(random(FOCUS_Y * SIZE_RATIO - FOCUS_SIZE, FOCUS_Y * SIZE_RATIO + FOCUS_SIZE));
+      y = min(max(0, y), PIC_FOR_SAMPLING.height - 1);
+    } else {
+      x = round(random(PIC_FOR_SAMPLING.width));
+      y = round(random(PIC_FOR_SAMPLING.height));
+    }
     
     strokeColor = PIC_FOR_SAMPLING.get(x, y);
     color colorToMatch = strokeColor;
@@ -42,7 +50,7 @@ class Brush {
       color nextColor = colorToMatch;
       float colorDist = 0.0;
       float smallestDist = 999999999.99;
-      for (int x2 = nextX - 2; x2 <= nextX + 2; x2++) {
+      for (int x2 = nextX + 2; x2 >= nextX - 2; x2--) {
         if (x2 >= 0 && x2 < PIC_FOR_SAMPLING.width + 2) {
           for (int y2 = nextY - 2; y2 <= nextY + 2; y2++) {
             if (y2 >= 0 && y2 < PIC_FOR_SAMPLING.height + 2) {
@@ -80,7 +88,7 @@ class Brush {
     Point point;
     for (int p = 0; p < pathPoints.size(); p++) {
       point = pathPoints.get(p);
-      pathPoints.set(p, new Point(point.x / SIZE_RATIO, point.y / SIZE_RATIO));
+      pathPoints.set(p, new Point((point.x + 0.5) / SIZE_RATIO, (point.y + 0.5) / SIZE_RATIO));
     }
   }
   
@@ -95,4 +103,8 @@ class Brush {
     }
     pointIndexToDraw++;
   }
+}
+
+boolean shouldFocus() {
+  return FOCUS_X != 0 && FOCUS_Y != 0 && random(1.0) < CHANCE_FOCUS;
 }

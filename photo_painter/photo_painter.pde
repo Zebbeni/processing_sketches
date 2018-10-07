@@ -2,7 +2,7 @@ void setup(){
   size(100,100);
   surface.setResizable(true);
 
-  frameRate(60);
+  frameRate(100);
   background(245, 245, 220); // beige (TODO: tile a canvas texture image)
   smooth();
   randomSeed(10);
@@ -26,4 +26,9 @@ void draw(){
     }
     updateBrushes();
   }
+}
+
+void mouseClicked() {
+  FOCUS_X = mouseX;
+  FOCUS_Y = mouseY;
 }
