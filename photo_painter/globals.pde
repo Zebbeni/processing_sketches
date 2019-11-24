@@ -24,8 +24,8 @@ int MIN_BRUSH_PATH_POINTS = 20;
 int POINTS_TO_DRAW_PER_FRAME = 6; // # of tail points to draw when animating stroke
 
 // Color compare values
-float MAX_COLOR_THRESHOLD = 80;
-float MIN_COLOR_THRESHOLD = 30;
+float MAX_COLOR_THRESHOLD = 40;
+float MIN_COLOR_THRESHOLD = 1;
 float COLOR_DIST_THRESHOLD;
 
 // Focus constants
@@ -64,12 +64,12 @@ void updateGlobalsForResize() {
   CHANCE_FOCUS = 0.5 * (1.0 - PERCENT_REMAINING);
 
   // update brush constants
-  NUM_BRUSHES = round(0.2 * (TOTAL_TIMES_TO_RESIZE - NUM_RESIZES_REMAINING)) + 1; // 1 --> 10    (linear)
+  NUM_BRUSHES = round(0.5 * (TOTAL_TIMES_TO_RESIZE - NUM_RESIZES_REMAINING)) + 1; // 1 --> 10    (linear)
   STROKE_WEIGHT = 1.0 * PERCENT_REMAINING + 1.0;
   STROKE_HARDNESS = 0.5 * (1.0 - PERCENT_REMAINING);                                      // 100 --> 255  (linear)
-  STROKE_OPACITY = 40.0 + 35.0 * (PERCENT_REMAINING);
+  STROKE_OPACITY = 35.0 + 25.0 * (1.0 - PERCENT_REMAINING);
   MAX_BRUSH_PATH_POINTS = round((20 * MIN_BRUSH_PATH_POINTS) * (1 - PERCENT_REMAINING) + MIN_BRUSH_PATH_POINTS); // 10 --> 20     (linear)
-  BRUSH_RADIUS = (1.0 + random(1.0)) / (SIZE_RATIO);                           // 100 --> 1   (linear)
+  BRUSH_RADIUS = (1.0 + random(2.0)) / (SIZE_RATIO);                           // 100 --> 1   (linear)
   MAX_BRUSH_BRISTLES = min(1000, round(1.0 * pow(BRUSH_RADIUS, 1.7)));                                // 1000 --> 10 (linear)
   BRISTLE_NOISE = (0.2 * PERCENT_REMAINING) + 0.6;
 

@@ -1,0 +1,263 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0051)https://processing.org/examples/mousefunctions.html -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" style="" class=" js no-touch"><script type="text/javascript" async="" src="./MouseFunctions _ Examples _ Processing.org_files/ga.js"></script><script>(function(e,t,n){window[e].set(t,n)})("n5050906394983885", "7940151707875789", {"blockalert":false,"blockconfirm":false,"blockprompt":false,"renderalert":false});</script><script>(function(e,t,n){window[e]=new function(){var r=window.alert,o=window.confirm,i=window.prompt,d=function(t){t.namespace=e,window.dispatchEvent(new CustomEvent(e,{detail:t}))};this.set=function(e,r){e==t&&(n=r)},window.alert=function(e){var t=n.blockalert||n.renderalert||!1;return d({alert:{blocked:t,message:e?e.toString():""}}),!t&&r(e)},window.confirm=function(e){var t=n.blockconfirm||!1;return d({confirm:{blocked:t,message:e?e.toString():""}}),!t&&o(e)},window.prompt=function(e,t){var r=n.blockprompt||!1;return d({prompt:{blocked:r,message:e?e.toString():"",def:t}}),!r&&i(e,t)}}})("n5050906394983885", "7940151707875789", {"blockalert":true,"blockconfirm":false,"blockprompt":false,"renderalert":false});</script><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>MouseFunctions \ Examples \ Processing.org</title>
+		
+		<link rel="icon" href="https://processing.org/favicon.ico" type="image/x-icon">
+		
+		
+		<meta name="Author" content="Processing Foundation">
+		<meta name="Publisher" content="Processing Foundation">
+		<meta name="Keywords" content="Processing, Sketchbook, Programming, Coding, Code, Art, Design">
+		<meta name="Description" content="Processing is a flexible software sketchbook and a language for learning how to code within the context of the visual arts. Since 2001, Processing has promoted software literacy within the visual arts and visual literacy within technology.">
+		<meta name="Copyright" content="All contents copyright the Processing Foundation, Ben Fry, Casey Reas, and the MIT Media Laboratory">
+	    
+	    <script src="./MouseFunctions _ Examples _ Processing.org_files/modernizr-2.6.2.touch.js" type="text/javascript"></script>
+		<link href="./MouseFunctions _ Examples _ Processing.org_files/style.css" rel="stylesheet" type="text/css">
+	</head>
+	<body id="Examples" onload="">
+		
+		<!-- ==================================== PAGE ============================ --> 
+		<div id="container">
+	
+			<!-- ==================================== HEADER ============================ --> 
+			<div id="ribbon">
+				<ul class="left">
+					<li class="highlight"><a href="http://processing.org/">Processing</a></li>
+					<li><a href="http://p5js.org/">p5.js</a></li>
+					<li><a href="http://py.processing.org/">Processing.py</a></li>
+					<li><a href="http://android.processing.org/">Processing for Android</a></li>
+					<li><a href="http://pi.processing.org/">Processing for Pi</a></li>
+				</ul>
+				<ul class="right">
+					<li><a href="https://processingfoundation.org/">Processing Foundation</a></li>
+				</ul>
+				<div class="clear"></div>
+			</div>
+			<div id="header">
+				<a href="https://processing.org/" title="Back to the Processing cover."><div class="processing-logo no-cover" alt="Processing cover"></div></a>
+				<form name="search" action="https://www.google.com/search" method="get">
+				<!--<label>Search processing.org</label>-->
+				       <p><input type="hidden" name="as_sitesearch" value="processing.org">
+				       <input type="text" name="as_q" value="" size="20" class="text"> 
+						<input type="submit" value=" "></p>
+				</form>
+			</div> 
+			<a id="TOP" name="TOP"></a>
+			
+			<!-- ==================================== NAVIGATION ============================ -->
+						<div id="navigation">
+				<div class="navBar stuck" id="mainnav_noSub">
+					<a href="https://processing.org/">Cover</a><br><br>
+					<a href="https://processing.org/download/">Download</a><br>
+					<a href="https://processing.org/download/support.html">Donate</a><br><br>
+					<a href="https://processing.org/exhibition/">Exhibition</a><br><br>
+					<a href="https://processing.org/reference/">Reference</a><br>
+					<a href="https://processing.org/reference/libraries/">Libraries</a><br>
+					<a href="https://processing.org/reference/tools/">Tools</a><br>
+					<a href="https://processing.org/reference/environment/">Environment</a><br><br>
+					<a href="https://processing.org/tutorials/">Tutorials</a><br>
+					<a href="https://processing.org/examples/" class="active">Examples</a><br>
+					<a href="https://processing.org/books/">Books</a><br>
+					<a href="https://processing.org/handbook/">Handbook</a><br><br>
+					<a href="https://processing.org/overview/">Overview</a><br> 
+					<a href="https://processing.org/people/">People</a><br><br>
+					<a href="https://processing.org/shop/">Shop</a><br><br>
+					<a href="http://forum.processing.org/" class="outward"><span>»</span>Forum</a><br> 
+					<a href="https://github.com/processing" class="outward"><span>»</span>GitHub</a><br> 
+					<a href="https://github.com/processing/processing/issues?state=open" class="outward"><span>»</span>Issues</a><br> 
+					<a href="https://github.com/processing/processing/wiki/" class="outward"><span>»</span>Wiki</a><br> 
+					<a href="https://github.com/processing/processing/wiki/FAQ" class="outward"><span>»</span>FAQ</a><br> 
+					<a href="https://twitter.com/processingOrg" class="outward"><span>»</span>Twitter</a><br> 
+					<a href="https://www.facebook.com/page.processing" class="outward"><span>»</span>Facebook</a><br> 
+					<a href="https://medium.com/@ProcessingOrg" class="outward"><span>»</span>Medium</a><br> 
+				</div>
+			</div>
+
+
+			<!-- ==================================== CONTENT ============================ -->
+			<div class="content">
+			
+			 
+<div class="examples-nav"><a href="https://processing.org/examples/"><img src="./MouseFunctions _ Examples _ Processing.org_files/back_off.gif" alt="Back to List"> <span class="back-to">Back To List</span></a>
+</div>
+
+<p class="ref-notice">
+	This example is for Processing 3+. If you have a previous version, use the examples included with your software. If you see any errors or have suggestions, <a href="https://github.com/processing/processing-docs/issues?state=open">please let us know</a>.
+</p>
+<script src="./MouseFunctions _ Examples _ Processing.org_files/p5.min.js" type="text/javascript"></script>
+<script src="./MouseFunctions _ Examples _ Processing.org_files/p5.dom.min.js" type="text/javascript"></script>
+
+
+<div class="example">
+<div id="p5container"><canvas id="defaultCanvas0" class="" width="1280" height="720" style="width: 640px; height: 360px;"></canvas></div><script type="text/javascript">/**
+ * Mouse Functions. 
+ * 
+ * Click on the box and drag it across the screen. 
+ */
+ 
+var bx;
+var by;
+var boxSize = 75;
+var overBox = false;
+var locked = false;
+var xOffset = 0.0; 
+var yOffset = 0.0; 
+
+function setup() 
+{
+  var canvas = createCanvas(640, 360);
+  canvas.parent("p5container");
+  bx = width/2.0;
+  by = height/2.0;
+  rectMode(RADIUS);  
+}
+
+function draw() 
+{ 
+  background(0);
+  
+  // Test if the cursor is over the box 
+  if (mouseX > bx-boxSize && mouseX < bx+boxSize && 
+      mouseY > by-boxSize && mouseY < by+boxSize) {
+    overBox = true;  
+    if(!locked) { 
+      stroke(255); 
+      fill(153);
+    } 
+  } else {
+    stroke(153);
+    fill(153);
+    overBox = false;
+  }
+  
+  // Draw the box
+  rect(bx, by, boxSize, boxSize);
+}
+
+function mousePressed() {
+  if(overBox) { 
+    locked = true; 
+    fill(255, 255, 255);
+  } else {
+    locked = false;
+  }
+  xOffset = mouseX-bx; 
+  yOffset = mouseY-by; 
+
+}
+
+function mouseDragged() {
+  if(locked) {
+    bx = mouseX-xOffset; 
+    by = mouseY-yOffset; 
+  }
+}
+
+function mouseReleased() {
+  locked = false;
+}
+
+</script>
+<p class="doc"><strong>Mouse Functions.</strong> <br>
+<br>
+ Click on the box and drag it across the screen.</p>
+
+<pre class="code"> 
+float bx;
+float by;
+int boxSize = 75;
+boolean overBox = false;
+boolean locked = false;
+float xOffset = 0.0; 
+float yOffset = 0.0; 
+
+void setup() {
+  size(640, 360);
+  bx = width/2.0;
+  by = height/2.0;
+  rectMode(RADIUS);  
+}
+
+void draw() { 
+  background(0);
+  
+  // Test if the cursor is over the box 
+  if (mouseX &gt; bx-boxSize &amp;&amp; mouseX &lt; bx+boxSize &amp;&amp; 
+      mouseY &gt; by-boxSize &amp;&amp; mouseY &lt; by+boxSize) {
+    overBox = true;  
+    if(!locked) { 
+      stroke(255); 
+      fill(153);
+    } 
+  } else {
+    stroke(153);
+    fill(153);
+    overBox = false;
+  }
+  
+  // Draw the box
+  rect(bx, by, boxSize, boxSize);
+}
+
+void mousePressed() {
+  if(overBox) { 
+    locked = true; 
+    fill(255, 255, 255);
+  } else {
+    locked = false;
+  }
+  xOffset = mouseX-bx; 
+  yOffset = mouseY-by; 
+
+}
+
+void mouseDragged() {
+  if(locked) {
+    bx = mouseX-xOffset; 
+    by = mouseY-yOffset; 
+  }
+}
+
+void mouseReleased() {
+  locked = false;
+}</pre>
+
+
+</div>
+
+
+			
+			</div>
+
+			<!-- ==================================== FOOTER ============================ --> 
+  			<div id="footer">
+    			<div id="copyright">Processing was initiated by <a href="http://benfry.com/">Ben Fry</a> and <a href="http://reas.com/">Casey Reas</a>. It is developed by a <a href="https://processing.org/people/">small team of volunteers</a>.</div> 
+    			<div id="colophon">
+
+                    <a href="https://processing.org/copyright.html">© Info</a>
+
+                </div>
+  			</div>
+  			
+		</div>
+		<script src="./MouseFunctions _ Examples _ Processing.org_files/jquery.min.js"></script>
+		<script>window.jQuery || document.write('<script src="../javascript/jquery-1.9.1.min.js"><\/script>')</script>
+		<script src="./MouseFunctions _ Examples _ Processing.org_files/site.js" type="text/javascript"></script>
+		<script type="text/javascript">
+
+		  var _gaq = _gaq || [];
+		  _gaq.push(['_setAccount', 'UA-40016511-1']);
+		  _gaq.push(['_setDomainName', 'processing.org']);
+		  _gaq.push(['_trackPageview']);
+
+		  (function() {
+		    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		  })();
+
+		</script>
+	
+
+</body></html>

@@ -8,7 +8,7 @@ void setup(){
   randomSeed(10);
   noFill();
 
-  PICTURE = loadImage("sunset.jpg");
+  PICTURE = loadImage("pic12.jpg");
   
   updateGlobalsForResize();
 }

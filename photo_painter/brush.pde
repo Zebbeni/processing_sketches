@@ -5,6 +5,7 @@ class Brush {
   int pointIndexToDraw;
   
   Brush() {
+    this.strokeColor = color(random(255), random(255),random(255));
     initializeBristles();
     this.createStrokePath();
   }
@@ -26,17 +27,37 @@ class Brush {
   }
  
   void createStrokePath() {
-    int x, y;
-    if (shouldFocus()) {
-      x = round(random(FOCUS_X * SIZE_RATIO - FOCUS_SIZE, FOCUS_X * SIZE_RATIO + FOCUS_SIZE));
-      x = min(max(0, x), PIC_FOR_SAMPLING.width - 1);
-      y = round(random(FOCUS_Y * SIZE_RATIO - FOCUS_SIZE, FOCUS_Y * SIZE_RATIO + FOCUS_SIZE));
-      y = min(max(0, y), PIC_FOR_SAMPLING.height - 1);
-    } else {
-      x = round(random(PIC_FOR_SAMPLING.width));
-      y = round(random(PIC_FOR_SAMPLING.height));
+    int x = round(random(PIC_FOR_SAMPLING.width));
+    int y = round(random(PIC_FOR_SAMPLING.height));
+
+    boolean findSimilar = true;
+    if (random(1.0) > 0.90) {
+      findSimilar = false;
     }
-    
+
+    if (random(1) < 0.9) {
+      // 90% of the time, try to keep drawing a similar color
+      int NUM_CANDIDATES = 50;
+      float biggestDifference = -9999999.999;
+      float smallestDifference = 999999999.99;
+      for (int c = 0; c < NUM_CANDIDATES; c++) {
+        int candidateX = round(random(PIC_FOR_SAMPLING.width));
+        int candidateY = round(random(PIC_FOR_SAMPLING.height));
+        color candidateColor = PIC_FOR_SAMPLING.get(candidateX, candidateY);
+        float thisDistance = colorDist(candidateColor, strokeColor);
+        if (findSimilar && thisDistance < smallestDifference) {
+          smallestDifference = thisDistance;
+          x = candidateX;
+          y = candidateY;
+        }
+        if (!findSimilar && thisDistance > biggestDifference) {
+          biggestDifference = thisDistance;
+          x = candidateX;
+          y = candidateY;
+        }
+      }
+    }
+
     strokeColor = PIC_FOR_SAMPLING.get(x, y);
     color colorToMatch = strokeColor;
     
@@ -103,8 +124,4 @@ class Brush {
     }
     pointIndexToDraw++;
   }
-}
-
-boolean shouldFocus() {
-  return FOCUS_X != 0 && FOCUS_Y != 0 && random(1.0) < CHANCE_FOCUS;
 }
